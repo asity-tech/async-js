@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>5.html</h1>
+      <h1>promise example</h1>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+    <!-- <script>
+      const getSomething = () => {
+        //   here resolve and reject are the two methods of promise which is built inside an api which we automatically recieve as parameter in this funciton
+        return new Promise((resolve, reject) => {
+          //   resolve("some data");
+          reject("some error");
+        });
+      };
+
+      //   when we resolve something in a promise then it fires the callback function inside the then method & that callback function takes the we pass through resolve function
+      getSomething().then(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    </script> -->
+
+    <!-- reslove something -->
+    <!-- <script>
+      const getSomething = () => {
+        return new Promise((resolve, reject) => {
+          resolve("some data");
+        });
+      };
+
+      getSomething().then(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    </script> -->
+
+    <!-- reject something -->
+    <!-- <script>
+      const getSomething = () => {
+        return new Promise((resolve, reject) => {
+          reject("some error");
+        });
+      };
+
+      getSomething().then(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    </script> -->
+
+    <!-- instead of having err function side the then method we can use catch method for the same -->
+    <script>
+      const getSomething = () => {
+        return new Promise((resolve, reject) => {
+          //   resolve("some data");
+          reject("some error");
+        });
+      };
+
+      getSomething()
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

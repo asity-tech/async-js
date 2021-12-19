@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>3.html</h1>
+      <h1>using json data</h1>
+      <p>JSON - javascript object notation</p>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+    <script>
+      const getTodos = (callback) => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener("readystatechange", () => {
+          if (request.readyState === 4 && request.status === 200) {
+            const data = JSON.parse(request.responseText);
+            callback(undefined, data);
+          } else if (request.readyState === 4 && request.status === 404) {
+            callback("could not fetch any data", undefined);
+          }
+        });
+
+        request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        request.send();
+      };
+
+      getTodos((err, data) => {
+        console.log("callback fired");
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data);
+        }
+      });
+    </script>
+  </body>
+</html>

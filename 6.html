@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>5.html</h1>
+      <h1>promise example</h1>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+
+    <script>
+      const getTodos = (resources) => {
+        return new Promise((resolve, reject) => {
+          const request = new XMLHttpRequest();
+
+          request.addEventListener("readystatechange", () => {
+            if (request.readyState === 4 && request.status === 200) {
+              const data = JSON.parse(request.responseText);
+              resolve(data);
+            } else if (request.readyState === 4 && request.status === 404) {
+              reject("could not fetch any data");
+            }
+          });
+
+          request.open("GET", resources);
+          request.send();
+        });
+      };
+
+      getTodos("todos/manikangkan.json")
+        .then((data) => console.log("promise resolved", data))
+        .catch((err) => console.log("promise rejected", err));
+    </script>
+  </body>
+</html>

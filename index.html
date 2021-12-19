@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+  <title>home</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Saira:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main>
+    <h1>what is asynchronous js</h1>
+    <ul>
+      <li>
+        governs how we perform tasks which take some time to complete for e.g
+        getting data from database
+      </li>
+      <li>start something now & finish it later</li>
+    </ul>
+    <h1>what is synchronous js</h1>
+
+    <ul>
+      <li>
+        js by it's nature is sync means js can execute only only statement at
+        a time from top to bottom
+      </li>
+
+      <li>for eg:
+        <ul>
+          <li>console.log("line one")</li>
+          <li>console.log("line two")</li>
+          <li>console.log("line three")</li>
+        </ul>
+      <li>in the top example line two can't start before line one finish & line three can't start before line one two
+      </li>
+      <li>means it is excuting one at a time in order</li>
+      </li>
+    </ul>
+
+    <h1>js is called single threaded language that means</h1>
+    <ul>
+      <li>
+        there will be thread which is like an ordered sequence of statements &
+        only one of those statement can run at a time
+        <ul>
+          <li>statement 1</li>
+          <li>statement 2</li>
+          <li>statement 3</li>
+        </ul>
+      </li>
+      <li>
+        that's all one statement is being executed at a time after one another
+        <ul>
+          <li>statement 1</li>
+          <li>
+            statement 2 -
+            <span>
+              made a request to database which will take time more than usual,
+              now as we know in async programming world only one statement can
+              run at a time this fetching of data from database block the
+              path/program, as it's blocks the next code from running untill
+              the data back
+              <ul>
+                <li>now you can think what if it will take 2-3 sec more to execute</li>
+                <li>stop thinking like that because my dear we'll dealing with lot's of function like these who will be
+                  needed more time to excute that could be take more than 10 sec or dependentent on the server
+                  performance we don't know exactely</li>
+                <li>in that case it will block the rest of the code underneath from running untill those task are
+                  complete</li>
+                <li>this is the huge disadvange of sync code</li>
+                <li>this is why <strong>async code</strong> lands like a boss to help us out</li>
+              </ul>
+            </span>
+          </li>
+          <li>statement 3</li>
+        </ul>
+      </li>
+    </ul>
+    <h1>async</h1>
+    <ul>
+      <li>start now & finish it later</li>
+      <ul>
+        <li>statement 1</li>
+        <li>statement 2 <span>now imagine here we're using a async function to request the external data which maybe
+            placed in a server or kahi bhi
+            <ul>
+              <li>now what will happen browser will take that async function outside of the scope if this single thread
+                in some other part of browser & it also put a callback function & puts into one side too so that it
+                knows to execute it's later when the data is ready to serve</li>
+              <li>now listen carefully, as the browser handle that part of data fetching outside of the scope of the
+                thread now js can carry on down & execute the remaining functions</li>
+              <li>in the meantime the data fetching part is also going on some other part of the broweser</li>
+              <li>when it's receives the data back from the network request & once the rest of the functions have been
+                executed then we are allow to call the callback function & finish the original function</li>
+              <li>this is what <strong>async js</strong> start now & finish it later, which makes our code non-blocking
+              </li>
+            </ul>
+          </span></li>
+        <li>statement 3</li>
+        <li>statement 4</li>
+        <li>callback</li>
+      </ul>
+      <li>enough theroy let's dive into practical</li>
+    </ul>
+    <h1>async js practical</h1>
+    <div>
+      <a href="index.html">home</a>
+      <a href="1.html">1</a>
+      <a href="2.html">2</a>
+      <a href="3.html">3</a>
+      <a href="4.html">4</a>
+      <a href="5.html">5</a>
+    </div>
+  </main>
+</body>
+
+</html>

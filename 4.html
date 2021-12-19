@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>4.html</h1>
+      <h1>callback hell</h1>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+    <script>
+      const getTodos = (resources, callback) => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener("readystatechange", () => {
+          if (request.readyState === 4 && request.status === 200) {
+            const data = JSON.parse(request.responseText);
+            callback(undefined, data);
+          } else if (request.readyState === 4 && request.status === 404) {
+            callback("could not fetch any data", undefined);
+          }
+        });
+
+        request.open("GET", resources);
+        request.send();
+      };
+
+      // this code looks pretty messay, that's why it's callback hell which is very hard to read and maintain
+      getTodos("./todos/manikangkan.json", (err, data) => {
+        console.log(data);
+        getTodos("./todos/priyanshu.json", (err, data) => {
+          console.log(data);
+          getTodos("./todos/abhisek.json", (err, data) => {
+            console.log(data);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

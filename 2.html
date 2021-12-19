@@ -1,0 +1,174 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>2.html</h1>
+      <h1>http request</h1>
+      <ul>
+        <li>make http request to get data from another server</li>
+        <li>
+          we make these requests to API i.e application programming interface
+          endpoints
+        </li>
+        <li>
+          API endpoints are nothing but an URL which that a particular API or
+          server exposes to us so that we can use them to get data from them
+        </li>
+        <li>
+          now our job will be play with these API end points & make http request
+          to them & get those data & use it as per our convinience
+        </li>
+        <li>
+          now lastly what is an <strong>http</strong> request - https request is
+          used to get external data via some kind of API endpoint
+        </li>
+      </ul>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+    <!-- <script>
+      // let make a http request
+
+      const request = new XMLHttpRequest(); // XMLHttpRequest is a class in javascript which is used to make http request
+
+      request.open("GET", "https://jsonplaceholder.typicode.com/todos"); // open is a method of XMLHttpRequest which is used to make a http request
+
+      // open method takes two arguments - 1. method 2. url of the API endpoint we want to make a request to.
+
+      request.send(); // send is a method of XMLHttpRequest which is used to send the request
+
+      // now you can go and check browser network tab to see the response of the request
+    </script> -->
+
+    <!-- <script>
+      const request = new XMLHttpRequest();
+
+      request.addEventListener("readystatechange", () => {
+        console.log(request, request.readyState);
+      });
+      // readyState is a property of XMLHttpRequest which tells us the state of the request
+      // readyState = 0 means request not initialized
+      // readyState = 1 means server connection established
+      // readyState = 2 means request received
+      // readyState = 3 means processing request
+      // readyState = 4 means request finished and response is ready
+
+      request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+      request.send();
+    </script> -->
+
+    <!-- checked whether the data get fetched or not using request.readyState & request.satus -->
+    <!-- <script>
+      const request = new XMLHttpRequest();
+
+      request.addEventListener("readystatechange", () => {
+        if (request.readyState === 4 && request.status === 200) {
+          console.log(request, request.responseText);
+        } else if (request.readyState === 4 && request.status === 404) {
+          console.log("page not found");
+        }
+      });
+
+      // wrong path
+      // request.open("GET", "https://jsonplaceholder.typicode.com/todoss");
+
+      request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+      request.send();
+    </script> -->
+
+    <!-- wrapped everything inside a function -->
+    <!-- <script>
+      const getTodos = () => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener("readystatechange", () => {
+          if (request.readyState === 4 && request.status === 200) {
+            console.log(request, request.responseText);
+          } else if (request.readyState === 4 && request.status === 404) {
+            console.log("page not found");
+          }
+        });
+
+        // wrong path
+        // request.open("GET", "https://jsonplaceholder.typicode.com/todoss");
+
+        request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        request.send();
+      };
+      getTodos();
+    </script> -->
+
+    <!-- using callback to make the process more elegent -->
+    <!-- <script>
+      const getTodos = (callback) => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener("readystatechange", () => {
+          if (request.readyState === 4 && request.status === 200) {
+            callback();
+          } else if (request.readyState === 4 && request.status === 404) {
+            callback();
+          }
+        });
+
+        // wrong path
+        // request.open("GET", "https://jsonplaceholder.typicode.com/todoss");
+
+        request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        request.send();
+      };
+      getTodos(() => {
+        console.log("callback fired");
+      });
+    </script> -->
+
+    <!-- deal with the error of callback, that happens because we call callback() on if & else if both -->
+    <script>
+      const getTodos = (callback) => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener("readystatechange", () => {
+          if (request.readyState === 4 && request.status === 200) {
+            callback(undefined, request.responseText);
+          } else if (request.readyState === 4 && request.status === 404) {
+            callback("could not fetch any data", undefined);
+          }
+        });
+
+        // wrong path
+        // request.open("GET", "https://jsonplaceholder.typicode.com/todoss");
+
+        request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        request.send();
+      };
+
+      console.log(1);
+      console.log(2);
+
+      // in case of callback from network request we always take the err first then data | that just convention
+
+      getTodos((err, data) => {
+        console.log("callback fired");
+        // console.log(err, data);
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data);
+        }
+      });
+
+      console.log(3);
+      console.log(4);
+    </script>
+  </body>
+</html>

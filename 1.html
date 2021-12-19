@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>1.html</h1>
+      <h1>console main chalo</h1>
+      <div>
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+      </div>
+    </main>
+    <script>
+      // console.log(1)
+      // console.log(2)
+      // console.log(3)
+      // console.log(4)
+      // console.log(5)
+
+      // --------------------------------
+
+      console.log(1);
+      console.log(2);
+      console.log(3);
+
+      //   mate imagine this is a network request which will take 2 sec to complete in this case we are not getting any data we're just waiting 2 sec
+
+      //   now what do you think is this gonna block the path of the program
+
+      //   ans is no it'll not gonna block the path of the program rather the callback function will excute after 2 sec
+
+      setTimeout(() => {
+        console.log("callback function fired");
+      }, 2000);
+
+      console.log(4);
+      console.log(5);
+    </script>
+  </body>
+</html>
