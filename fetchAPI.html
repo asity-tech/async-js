@@ -1,0 +1,55 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>fetchAPI.html</h1>
+      <h1>new native fetchAPI</h1>
+      <h1>console main chalo</h1>
+      <div class="container">
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+        <a href="6.html">6</a>
+        <a href="7.html">7</a>
+        <a href="8.html">8</a>
+        <a href="asyncAwait.html">asyncAwait</a>
+        <a href="fetchAPI.html">fetchAPI</a>
+        <a href="placeholderAPI.html">placeholderAPI</a>
+        <a href="unsplashAPI.html">unsplashAPI</a>
+        <a href="weatherAPI.html">weatherAPI</a>
+      </div>
+    </main>
+    <script>
+      // this method returs a promise to us means at some point I'll either resolve if it has a success or reject if it has a failure & when a promise return like this we can tackle that using then and catch
+      //   fetch("./todos/manikangkan.json");
+
+      //   fetch("./todos/manikangkan.json")
+      //     .then((response) => console.log("resolve", response))
+      //     .catch((err) => console.log("rejected", err));
+
+      // now the way fetchAPI works the promise only ever rejected when we get some kind of network error such as a 404 or 500 or something else that where we get a rejection
+
+      // now listen carefully if we mistype the url on the end point or the resource  then we don't get a rejection instead it still get resolved and we get a response however we in the resolve if we expand  we can see we have status 404 which means basically the resource can't be found
+
+      //   fetch("./todos/manikangkandas.json")
+      //     .then((response) => console.log("resolve", response))
+      //     .catch((err) => console.log("rejected", err));
+
+      // now inorder to tackle the same we can do a if check on status
+      //   here we can see we are not getting the json data directly but we are getting the response object which is a promise, if you expand response object you will get a method called json which will hold the json data and also return a promise
+
+      fetch("./todos/manikangkan.json")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => console.log(data))
+        .catch((err) => console.log("rejected", err));
+    </script>
+  </body>
+</html>

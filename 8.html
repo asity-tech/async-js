@@ -5,8 +5,8 @@
   </head>
   <body>
     <main>
-      <h1>5.html</h1>
-      <h1>promise example</h1>
+      <h1>8.html</h1>
+      <h1>multiple promise example 2</h1>
       <h1>console main chalo</h1>
       <div class="container">
         <a href="index.html">home</a>
@@ -45,8 +45,17 @@
         });
       };
 
+      //   this codes looks lots more cleaner than before i.e callback hell
       getTodos("todos/manikangkan.json")
-        .then((data) => console.log("promise resolved", data))
+        .then((data) => {
+          console.log("promise 1 resolved", data);
+          return getTodos("todos/priyanshu.json");
+        })
+        .then((data) => {
+          console.log("promise 2 resolved", data);
+          return getTodos("todos/abhisek.json");
+        })
+        .then((data) => console.log("promise 3 resolved", data))
         .catch((err) => console.log("promise rejected", err));
     </script>
   </body>

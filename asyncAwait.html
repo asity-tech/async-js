@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1</title>
+  </head>
+  <body>
+    <main>
+      <h1>asyncAwait.html</h1>
+      <h1>asyncAwait</h1>
+      <h1>console main chalo</h1>
+      <div class="container">
+        <a href="index.html">home</a>
+        <a href="1.html">1</a>
+        <a href="2.html">2</a>
+        <a href="3.html">3</a>
+        <a href="4.html">4</a>
+        <a href="5.html">5</a>
+        <a href="6.html">6</a>
+        <a href="7.html">7</a>
+        <a href="8.html">8</a>
+        <a href="asyncAwait.html">asyncAwait</a>
+        <a href="fetchAPI.html">fetchAPI</a>
+        <a href="placeholderAPI.html">placeholderAPI</a>
+        <a href="unsplashAPI.html">unsplashAPI</a>
+        <a href="weatherAPI.html">weatherAPI</a>
+      </div>
+    </main>
+
+    <script>
+      // whenever you called an async function it returns a promise regardless of what inside the function
+      //   this async function is itself is not blocking
+      const getTodos = async () => {
+        //   what this await does is it waits for the promise to resolve once that promise has resolved we can take that value from the resolve promise the response & assign this to response variable
+
+        const response = await fetch("./todos/manikangkan.json");
+        // remember when we get the response object then we have to use json() methos to get the actual data back & as the response object itself return a promise we can again use await keyword to that
+
+        const data = await response.json();
+        return data;
+      };
+      const test = getTodos();
+      console.log(test);
+    </script>
+  </body>
+</html>

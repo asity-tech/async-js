@@ -1,0 +1,42 @@
+linktree
+
+1. splash screen
+2. sign up and sign in
+3. form dashboard & sharing option & url genration with async process
+
+
+final dashboard stuff
+url/username
+link1 = 
+link2 = 
+link3 = 
+
+
+1st screen = sign up
+mail
+username
+password
+
+2nd screen = form dashboard
+link1 = 
+link2 = 
+link3 = 
+save async
+
+
+database schema
+fileds{
+    email,
+    username, 
+    password,
+    links:{
+        link1
+        link2
+        link3
+    },
+    timestamp
+}
+
+
+
+
